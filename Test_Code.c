@@ -27,7 +27,7 @@
 /* Test II.a.i: The program assigns correct value to each character*/
 /* [test determined value for all RN characters (single characters only)]       */
 
-START_TEST (DetermineValueOfSingleCharacterRomanNumerals)
+START_TEST(DetermineValueOfSingleCharacterRomanNumerals)
 {
 /* test code to determine if the program correctly calculates the value of a single character roman numeral */
 	int SCNV;
@@ -65,7 +65,7 @@ END_TEST
 /* [test output value with some value RN + one ]        */
 
 /* Create Test Suite */
-Suite * Calculator_Test_Suite(void)
+Suite *Calculator_Test_Suite(void)
 {
 	Suite *s;
 	TCase *tc_core;

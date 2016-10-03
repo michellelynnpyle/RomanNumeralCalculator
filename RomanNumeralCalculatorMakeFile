@@ -18,7 +18,7 @@ TARGET = RomanNumeralCalculator
 all: $(TARGET)
 
 $(TARGET): $(TARGET).c
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c Test_Code.c -shared
+	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c Test_Code.c -L/usr/include -lcheck
 
 clean:
 	$(RM) $(TARGET)
