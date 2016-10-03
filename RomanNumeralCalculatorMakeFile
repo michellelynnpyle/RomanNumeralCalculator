@@ -1,0 +1,24 @@
+
+# RomanNumeralCalculatorMakeFile
+# written by Michelle Lynn Pyle
+# October 3 2016
+# This is a make file for the roman numeral calculator code
+
+# usng the gcc compiler
+CC = gcc
+
+# set compiler flags
+# -g for debugging information in executable file
+# -Wall to turn on most compiler warnings
+CFLAGS = -g -Wall
+
+# the build target executable
+TARGET = RomanNumeralCalculator
+
+all: $(TARGET)
+
+$(TARGET): $(TARGET).c
+	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c Test_Code.c
+
+clean:
+	$(RM) $(TARGET)
