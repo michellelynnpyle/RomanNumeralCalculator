@@ -1,4 +1,5 @@
 
+
 /* Roman Numeral Calculator Test Code                                   */
 /* Written by Michelle Lynn Pyle                                                */
 /* for Pillar Technologies interview KATA                               */
@@ -9,6 +10,12 @@
 /* calculator Code                                                                              */
 /* include Check Test Code Package */
 #include <check.h>
+
+/* include standard libraries */
+#include <stdlib.h>
+
+/* include header with RomanNumeralCalculator Function Declarations */
+#include "RomanNumeralCalculator.h"
 
 /* Test I: The program takes user input                         */
 /* Test I.a: The program requests input                                 */
@@ -23,7 +30,24 @@
 START_TEST (DetermineValueOfSingleCharacterRomanNumerals)
 {
 /* test code to determine if the program correctly calculates the value of a single character roman numeral */
+	int SCNV;
 
+	SCNV = SingleCharacterValue('I');
+	ck_assert_int_eq(SCNV, 1);
+	SCNV = SingleCharacterValue('V');
+	ck_assert_int_eq(SCNV, 5);
+        SCNV = SingleCharacterValue('X');
+        ck_assert_int_eq(SCNV, 10);
+        SCNV = SingleCharacterValue('L');
+        ck_assert_int_eq(SCNV, 50);
+        SCNV = SingleCharacterValue('C');
+        ck_assert_int_eq(SCNV, 100);
+        SCNV = SingleCharacterValue('D');
+        ck_assert_int_eq(SCNV, 500);
+        SCNV = SingleCharacterValue('M');
+        ck_assert_int_eq(SCNV, 1000);
+
+	
 }
 END_TEST
 /* Test II.a.ii: The program knows the relative value of RN characters          */
@@ -39,5 +63,38 @@ END_TEST
 /* [test that program displays error message when result is greater than 3999]*/
 /* Test III.c: The program converts the result to an RN                         */
 /* [test output value with some value RN + one ]        */
+
+/* Create Test Suite */
+Suite * Calculator_Test_Suite(void)
+{
+	Suite *s;
+	TCase *tc_core;
+
+	s = suite_create("RomanNumeralCalculator");
+
+	/* Core Test Case */
+	tc_core = tcase_create("core");
+	tcase_add_test(tc_core, DetermineValueOfSingleCharacterRomanNumerals);
+	suite_add_tcase(s, tc_core);
+
+	return s;
+}
+
+int main(void)
+{
+
+	int number_failed;
+	Suite *s;
+	SRunner *sr;
+	
+	s = Calculator_Test_Suite();
+	sr = srunner_create(s);
+
+	srunner_run_all(sr, CK_NORMAL);
+	number_failed = srunner_ntests_failed(sr);
+	srunner_free(sr);
+	return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
+}
+
 /* Test III.d: The program displays the resulting RN                            */
 /* [just a human test, not sure if it needs to be tested...]    */
