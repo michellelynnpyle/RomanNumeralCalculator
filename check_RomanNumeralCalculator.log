@@ -1,0 +1,3 @@
+Running suite(s): RomanNumeralCalculator
+100%: Checks: 1, Failures: 0, Errors: 0
+PASS check_RomanNumeralCalculator (exit status: 0)
