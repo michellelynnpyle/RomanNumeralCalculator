@@ -19,16 +19,6 @@
 /* include header with RomanNumeralCalculator Function Declarations */
 #include "src/RomanNumeralCalculator.h"
 
-/* Test I: The program takes user input                         */
-/* Test I.a: The program requests input                                 */
-/* [maybe this is just a human test? or does not even need to be tested?] */
-/* Test I.b: The program reads input                    */
-/* [pass input to function, test value of variable where input is to be placed] */
-/* Test II: The program correctly interprets input              */
-/* Test II.a: The program calculates the value of RNs           */
-/* Test II.a.i: The program assigns correct value to each character*/
-/* [test determined value for all RN characters (single characters only)]       */
-
 START_TEST(DetermineValueOfI)
 {
 	int SCNV;
@@ -39,7 +29,7 @@ START_TEST(DetermineValueOfI)
 }
 END_TEST
 
-START_TEST(DetermineValueofV)
+START_TEST(DetermineValueOfV)
 {
 	int SCNV;
 	
@@ -47,52 +37,113 @@ START_TEST(DetermineValueofV)
 	ck_assert_int_eq(SCNV, 5);
 }
 END_TEST
-	/*
-        SCNV = SingleCharacterValue('X');
+
+START_TEST(DetermineValueOfX)
+{
+	int SCNV;
+	
+	SCNV = SingleCharacterValue('X');
         ck_assert_int_eq(SCNV, 10);
-        SCNV = SingleCharacterValue('L');
+}
+END_TEST
+
+START_TEST(DetermineValueOfL)
+{
+	int SCNV;
+
+	SCNV = SingleCharacterValue('L');
         ck_assert_int_eq(SCNV, 50);
+}
+END_TEST
+
+START_TEST(DetermineValueOfC)
+{
+	int SCNV;
+	
         SCNV = SingleCharacterValue('C');
         ck_assert_int_eq(SCNV, 100);
+}
+END_TEST
+
+START_TEST(DetermineValueOfD)
+{
+	int SCNV;
+	
         SCNV = SingleCharacterValue('D');
         ck_assert_int_eq(SCNV, 500);
+}
+END_TEST
+
+START_TEST(DetermineValueOfM)
+{
+	int SCNV;
+	
         SCNV = SingleCharacterValue('M');
         ck_assert_int_eq(SCNV, 1000);
-        SCNV = SingleCharacterValue('Q');
-        ck_assert_int_eq(SCNV, 0);
-START_TEST()
+}
+END_TEST
+
+START_TEST(CheckRandomCharacter)
 {
+	int SCNV;
+	
+	SCNV = SingleCharacterValue('Q');
+        ck_assert_int_eq(SCNV, 0);
+}
+END_TEST
+
+/* Test that code converts string of characters into separate characters */
+START_TEST(RomanNumeralStringToCharVector){
+
+	int SCNV[5];
+	char InputChars[5];
+	InputChars[0] = 'M' ;
+	InputChars[1] = 'x' ;
+	InputChars[2] = 'v' ;
+	InputChars[3] = 'I' ;
+	InputChars[4] = 'I' ;
+	SCNV = VectorOfCharacterValues(InputChars);
+	ck_assert_int_eq(SCNV[2], 5);
+
 
 }
 END_TEST
-*/
-/* Test II.a.ii: The program knows the relative value of RN characters          */
-/* [test determined value for 2-character RNs]  */
-/* Test II.a.iii: The program uses applies order of operations to determine RN string value     */
-/* [test determined value for 3+ character RNs] */
-/* Test II.b: The program determines the operation to perform on RNs            */
-/* [test that program adds when "+" is passed and subtracts when "-" is passed] */
-/* Test III: The program outputs the computed number                            */
-/* Test III.a: The program correctly calculates outputs                         */
-/* [this may be unecessary...computers know math...]    */
-/* Test III.b: The program determines if the result can be expressed as RN      */
-/* [test that program displays error message when result is greater than 3999]*/
-/* Test III.c: The program converts the result to an RN                         */
-/* [test output value with some value RN + one ]        */
 
 /* Create Test Suite */
-Suite *Calculator_Test_Suite(void)
+Suite *SingleCharacterSuite(void)
 {
 	Suite *s;
-	TCase *tc_core;
+	TCase *tc_SingleVal;
+	TCase *tc_AllSingleCharacterValues;
+	TCase *tc_OtherValues;
+	TCase *tc_TestStringValues;
 
-	s = suite_create("RomanNumeralCalculator");
+	s = suite_create("SingleCharacterSuite");
 
-	/* Core Test Case */
-	tc_core = tcase_create("core");
-	tcase_add_test(tc_core, DetermineValueOfI);
-	tcase_add_test(tc_core, DetermineValueofV);
-	suite_add_tcase(s, tc_core);
+	/* Test Case for Value of I */
+	tc_SingleVal = tcase_create("SingleVal");
+	tcase_add_test(tc_SingleVal, DetermineValueOfI);
+	suite_add_tcase(s, tc_SingleVal);
+
+	/* Test Case for all Single Characters */
+	tc_AllSingleCharacterValues = tcase_create("AllSingleCharacterValues");
+	tcase_add_test(tc_AllSingleCharacterValues, DetermineValueOfI);
+	tcase_add_test(tc_AllSingleCharacterValues, DetermineValueOfV);
+	tcase_add_test(tc_AllSingleCharacterValues, DetermineValueOfX);
+	tcase_add_test(tc_AllSingleCharacterValues, DetermineValueOfL);	
+	tcase_add_test(tc_AllSingleCharacterValues, DetermineValueOfC);
+	tcase_add_test(tc_AllSingleCharacterValues, DetermineValueOfD);
+	tcase_add_test(tc_AllSingleCharacterValues, DetermineValueOfM);
+	suite_add_tcase(s, tc_AllSingleCharacterValues);
+	/* Test Case for other characters = 0 */
+	tc_OtherValues = tcase_create("OtherValues");
+	tcase_add_test(tc_OtherValues, CheckRandomCharacter);
+	suite_add_tcase(s, tc_OtherValues);
+
+	/* Test Case for string of characters put in to vector */
+	tc_TestStringVals = tcase_create("TestStringVals");
+	tcase_add_test(tc_OtherValues, RomanNumeralStringToCharVector);
+	suite_add_tcase(s, tc_TestString_Vals);
 
 	return s;
 }
@@ -101,15 +152,17 @@ int main(void)
 {
 
 	int number_failed;
-	Suite *s;
+	Suite *SCSuite;
 	SRunner *sr;
 	
-	s = Calculator_Test_Suite();
-	sr = srunner_create(s);
+	SCSuite = SingleCharacterSuite();
+
+	sr = srunner_create(SCSuite);
 
 	srunner_run_all(sr, CK_NORMAL);
 	number_failed = srunner_ntests_failed(sr);
 	srunner_free(sr);
+
 	return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
 

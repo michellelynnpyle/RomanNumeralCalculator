@@ -11,5 +11,5 @@
 #endif
 
 int SingleCharacterValue (char);
-void DidCodeCompile(void);
+int *VectorOfCharacterValues (char *);
 

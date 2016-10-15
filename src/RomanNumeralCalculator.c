@@ -10,7 +10,10 @@
 
 
 int main(void) {
+
+int testval;
 return 0;
+
 
 }
 
@@ -32,7 +35,7 @@ int SingleCharacterValue( char RomanNumeral)
 		SCV = 500;}
 	if(RomanNumeral == 'M'){
 		SCV = 1000;}
-	if(RomanNumeral != 'I' && 'V' && 'X' && 'L' && 'C' && 'D' && 'M'){
+	if(RomanNumeral != 'I' && RomanNumeral != 'V' && RomanNumeral != 'X' && RomanNumeral != 'L' && RomanNumeral != 'C' && RomanNumeral != 'D' && RomanNumeral != 'M'){
 		SCV = 0;}
 	return SCV;
 /* end of SingleCharacterValue */}
