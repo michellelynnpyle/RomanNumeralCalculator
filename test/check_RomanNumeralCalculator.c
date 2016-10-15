@@ -39,8 +39,15 @@ START_TEST(DetermineValueOfI)
 }
 END_TEST
 
-	/*SCNV = SingleCharacterValue('V');
+START_TEST(DetermineValueofV)
+{
+	int SCNV;
+	
+	SCNV = SingleCharacterValue('V');
 	ck_assert_int_eq(SCNV, 5);
+}
+END_TEST
+	/*
         SCNV = SingleCharacterValue('X');
         ck_assert_int_eq(SCNV, 10);
         SCNV = SingleCharacterValue('L');
@@ -52,7 +59,13 @@ END_TEST
         SCNV = SingleCharacterValue('M');
         ck_assert_int_eq(SCNV, 1000);
         SCNV = SingleCharacterValue('Q');
-        ck_assert_int_eq(SCNV, 0);*/
+        ck_assert_int_eq(SCNV, 0);
+START_TEST()
+{
+
+}
+END_TEST
+*/
 /* Test II.a.ii: The program knows the relative value of RN characters          */
 /* [test determined value for 2-character RNs]  */
 /* Test II.a.iii: The program uses applies order of operations to determine RN string value     */
@@ -78,6 +91,7 @@ Suite *Calculator_Test_Suite(void)
 	/* Core Test Case */
 	tc_core = tcase_create("core");
 	tcase_add_test(tc_core, DetermineValueOfI);
+	tcase_add_test(tc_core, DetermineValueofV);
 	suite_add_tcase(s, tc_core);
 
 	return s;

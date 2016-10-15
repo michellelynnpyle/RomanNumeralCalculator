@@ -1,3 +1,4 @@
 Running suite(s): RomanNumeralCalculator
-100%: Checks: 1, Failures: 0, Errors: 0
-PASS check_RomanNumeralCalculator (exit status: 0)
+50%: Checks: 2, Failures: 1, Errors: 0
+test/check_RomanNumeralCalculator.c:47:F:core:DetermineValueofV:0: Assertion 'SCNV == 5' failed: SCNV == 0, 5 == 5
+FAIL check_RomanNumeralCalculator (exit status: 1)
