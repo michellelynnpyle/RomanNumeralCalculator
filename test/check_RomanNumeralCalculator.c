@@ -94,17 +94,15 @@ END_TEST
 
 /* Test that code converts string of characters into separate characters */
 START_TEST(RomanNumeralStringToCharVector){
-
-	int SCNV[5];
-	char InputChars[5];
-	InputChars[0] = 'M' ;
-	InputChars[1] = 'x' ;
-	InputChars[2] = 'v' ;
-	InputChars[3] = 'I' ;
-	InputChars[4] = 'I' ;
-	SCNV = VectorOfCharacterValues(InputChars);
-	ck_assert_int_eq(SCNV[2], 5);
-
+/* fucntion prototype: VectorOfCharacterValues (char array, array length, int array, array length) */
+	
+	InputRomanNumeral[0] = 'M' ;
+	InputRomanNumeral[1] = 'x' ;
+	InputRomanNumeral[2] = 'v' ;
+	InputRomanNumeral[3] = 'I' ;
+	InputRomanNumeral[4] = 'I' ;
+	VectorOfCharacterValues();
+	ck_assert_int_eq(InputRomanNumeralValues[2], 5);
 
 }
 END_TEST
@@ -141,9 +139,9 @@ Suite *SingleCharacterSuite(void)
 	suite_add_tcase(s, tc_OtherValues);
 
 	/* Test Case for string of characters put in to vector */
-	tc_TestStringVals = tcase_create("TestStringVals");
-	tcase_add_test(tc_OtherValues, RomanNumeralStringToCharVector);
-	suite_add_tcase(s, tc_TestString_Vals);
+	tc_TestStringValues = tcase_create("TestStringVals");
+	tcase_add_test(tc_TestStringValues, RomanNumeralStringToCharVector);
+	suite_add_tcase(s, tc_TestStringValues);
 
 	return s;
 }

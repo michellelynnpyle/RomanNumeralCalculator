@@ -11,7 +11,7 @@
 
 int main(void) {
 
-int testval;
+printf("\n\nthe code did compile\n\n");
 return 0;
 
 
@@ -40,4 +40,9 @@ int SingleCharacterValue( char RomanNumeral)
 	return SCV;
 /* end of SingleCharacterValue */}
 
+void VectorOfCharacterValues (void)
+{/* start of VectorOfCharacterValues */
 
+InputRomanNumeralValues[2] = 5;
+
+/* end of VectorOfCharacterValues */}

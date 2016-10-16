@@ -1,4 +1,3 @@
 Running suite(s): SingleCharacterSuite
-88%: Checks: 9, Failures: 1, Errors: 0
-test/check_RomanNumeralCalculator.c:101:F:OtherValues:CheckRandomCharacter:0: Assertion 'SCNV == 10' failed: SCNV == 0, 10 == 10
-FAIL check_RomanNumeralCalculator (exit status: 1)
+100%: Checks: 10, Failures: 0, Errors: 0
+PASS check_RomanNumeralCalculator (exit status: 0)

@@ -10,6 +10,12 @@
 
 #endif
 
+#define RNI	1
+#define RNV	5
+
+char InputRomanNumeral[7];
+int InputRomanNumeralValues[7];
+
 int SingleCharacterValue (char);
-int *VectorOfCharacterValues (char *);
+void VectorOfCharacterValues (void);
 
