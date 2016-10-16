@@ -20,7 +20,7 @@
 #include "src/RomanNumeralCalculator.h"
 
 START_TEST(DetermineValueOfI)
-{
+{/* function prototype: int SingleCharacterValue (char) */
 	int SCNV;
 
 	SCNV = SingleCharacterValue('I');
@@ -30,7 +30,7 @@ START_TEST(DetermineValueOfI)
 END_TEST
 
 START_TEST(DetermineValueOfV)
-{
+{/* function prototype: int SingleCharacterValue (char) */
 	int SCNV;
 	
 	SCNV = SingleCharacterValue('V');
@@ -39,7 +39,7 @@ START_TEST(DetermineValueOfV)
 END_TEST
 
 START_TEST(DetermineValueOfX)
-{
+{/* function prototype: int SingleCharacterValue (char) */
 	int SCNV;
 	
 	SCNV = SingleCharacterValue('X');
@@ -48,7 +48,7 @@ START_TEST(DetermineValueOfX)
 END_TEST
 
 START_TEST(DetermineValueOfL)
-{
+{/* function prototype: int SingleCharacterValue (char) */
 	int SCNV;
 
 	SCNV = SingleCharacterValue('L');
@@ -57,7 +57,7 @@ START_TEST(DetermineValueOfL)
 END_TEST
 
 START_TEST(DetermineValueOfC)
-{
+{/* function prototype: int SingleCharacterValue (char) */
 	int SCNV;
 	
         SCNV = SingleCharacterValue('C');
@@ -66,7 +66,7 @@ START_TEST(DetermineValueOfC)
 END_TEST
 
 START_TEST(DetermineValueOfD)
-{
+{/* function prototype: int SingleCharacterValue (char) */
 	int SCNV;
 	
         SCNV = SingleCharacterValue('D');
@@ -75,7 +75,7 @@ START_TEST(DetermineValueOfD)
 END_TEST
 
 START_TEST(DetermineValueOfM)
-{
+{/* function prototype: int SingleCharacterValue (char) */
 	int SCNV;
 	
         SCNV = SingleCharacterValue('M');
@@ -84,7 +84,7 @@ START_TEST(DetermineValueOfM)
 END_TEST
 
 START_TEST(CheckRandomCharacter)
-{
+{/* function prototype: int SingleCharacterValue (char) */
 	int SCNV;
 	
 	SCNV = SingleCharacterValue('Q');
@@ -94,11 +94,11 @@ END_TEST
 
 /* Test that code converts string of characters into separate characters */
 START_TEST(RomanNumeralStringToCharVector){
-/* fucntion prototype: VectorOfCharacterValues (char array, array length, int array, array length) */
+/* fucntion prototype: void VectorOfCharacterValues (void) */
 	
 	InputRomanNumeral[0] = 'M' ;
-	InputRomanNumeral[1] = 'x' ;
-	InputRomanNumeral[2] = 'v' ;
+	InputRomanNumeral[1] = 'X' ;
+	InputRomanNumeral[2] = 'V' ;
 	InputRomanNumeral[3] = 'I' ;
 	InputRomanNumeral[4] = 'I' ;
 	VectorOfCharacterValues();

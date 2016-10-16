@@ -15,6 +15,7 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([1.11 subdir-objects -Wall -Werror])
 AC_CONFIG_FILES([Makefile])
 
+# make sure Check is available on the system
 AM_PATH_CHECK(,[have_check="yes"],
   AC_MSG_WARN([Check not found; cannot run unit tests!])
   [have_check="no"])
@@ -23,7 +24,8 @@ AM_CONDITIONAL(HAVE_CHECK, test x"$have_check" = "xyes")
 # initialize Libtools
 LT_INIT
 
-# Checks for libraries
+# Looks for libraries needed for Check
+# Check version 0.10.0 used
 AC_CHECK_LIB(m, floor)
 AC_CHECK_LIB(rt, setitimer)
 AC_CHECK_LIB(pthread, pthread_create)

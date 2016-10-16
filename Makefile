@@ -546,16 +546,28 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
+
+# Recommended Automake Flags
 ACLOCAL_AMFLAGS = -I m4 --install
+
+# Creating a library for the bin program and check program
 lib_LTLIBRARIES = libRomanNumeralCalculator-1.0.la
 libRomanNumeralCalculator_1_0_la_SOURCES = src/RomanNumeralCalculator.c src/RomanNumeralCalculator.h
 include_HEADERS = src/RomanNumeralCalculator.h
+# Declare source files for the bin program
 RomanNumeralCalculator_SOURCES = src/RomanNumeralCalculator.c src/RomanNumeralCalculator.h
+# Libraries for the bin program
 RomanNumeralCalculator_LDADD = $(lib_LTLIBRARIES)
+# Compiler flags (library flags needed for check to work)
 RomanNumeralCalculator_CPPFLAGS = -DDEBUG -lsubunit -lm -lrt -lpthread
+
+# Distributes a file in the m4 sub directory to automake does not delete it
 EXTRA_DIST = m4/NOTES
+# Declare source files for check program
 check_RomanNumeralCalculator_SOURCES = test/check_RomanNumeralCalculator.c $(top_builddir)/src/RomanNumeralCalculator.h
+# Compiler flags needed for check program
 check_RomanNumeralCalculator_CFLAGS =  -lsubunit -lm -lrt -lpthread
+# Libraries needed for check program based on Check Unit Testing
 check_RomanNumeralCalculator_LDADD = $(top_builddir)/libRomanNumeralCalculator-1.0.la -lcheck
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
