@@ -11,7 +11,7 @@
 
 int main(void) {
 
-printf("\n\nthe code did Comp  ile\n\n");
+printf("\n\nthe code did Compile\n\n");
 return 0;
 
 
@@ -23,28 +23,17 @@ int SingleCharacterValue( char RomanNumeral)
 /* 0 is returned if the character is not part of the roman numeral */
 /* system. other functions will check for zero values and return errors */
 
-/* recode to a linear search using constant values for the roman numeral */
-/* characters and corresponding values and loop s.t. search terminates */ 
-/* when value is found */
+	int SCV, i;
+	SCV = 0;
+	for(i=0;i<=6;i++)
+	{
+		if(RomanNumeral == RNChars[i])
+		{
+			SCV = RNVals[i];
+			i = 6;
+		}
+	}
 
-	int SCV;
-
-	if(RomanNumeral == 'I'){
-		SCV = 1;}
-	if(RomanNumeral == 'V'){
-		SCV = 5;}
-	if(RomanNumeral == 'X'){
-		SCV = 10;}
-	if(RomanNumeral == 'L'){
-		SCV = 50;}
-	if(RomanNumeral == 'C'){
-		SCV = 100;}
-	if(RomanNumeral == 'D'){
-		SCV = 500;}
-	if(RomanNumeral == 'M'){
-		SCV = 1000;}
-	if(RomanNumeral != 'I' && RomanNumeral != 'V' && RomanNumeral != 'X' && RomanNumeral != 'L' && RomanNumeral != 'C' && RomanNumeral != 'D' && RomanNumeral != 'M'){
-		SCV = 0;}
 	return SCV;
 /* end of SingleCharacterValue */}
 
