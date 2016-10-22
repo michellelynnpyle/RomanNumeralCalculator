@@ -53,5 +53,10 @@ RNValues VectorOfCharacterValues (RNString InputRN)
 	return InputRNValues;
 /* end of VectorOfCharacterValues */}
 
+int RomanNumeralArabicValue (RNValues InputRNValues)
+{/* start of RomanNumeralArabicValue */
+return 3;
+/* end of RomanNumeralArabicValue */}
+
 
 

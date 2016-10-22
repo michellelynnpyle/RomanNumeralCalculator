@@ -123,15 +123,32 @@ START_TEST(RomanNumeralStringToCharVector){
 	RNString TestNumeral;
 	RNValues TestValues;
 	strcpy(TestNumeral.characters, "MXVII");
-	InputRomanNumeral[0] = 'M' ;
-	InputRomanNumeral[1] = 'X' ;
-	InputRomanNumeral[2] = 'V' ;
-	InputRomanNumeral[3] = 'I' ;
-	InputRomanNumeral[4] = 'I' ;
-	InputRomanNumeral[5] = NULL;
 	TestValues = VectorOfCharacterValues(TestNumeral);
+	ck_assert_int_eq(TestValues.Values[0], 1000);
+	ck_assert_int_eq(TestValues.Values[1], 10);
 	ck_assert_int_eq(TestValues.Values[2], 5);
+	ck_assert_int_eq(TestValues.Values[3], 1);
+	ck_assert_int_eq(TestValues.Values[4], 1);
+	ck_assert_int_eq(TestValues.Values[6], NULL);
 
+
+}
+END_TEST
+
+/* Test that code converts string of values into correct value */
+START_TEST(RomanNumeraltoArabic){
+/* function prototype: int RomanNumeralArabicValue (RNValues) */
+
+	int theArabicValue;
+	RNValues theRNCharacterValues;
+	theRNCharacterValues.Values[0] = 10;
+	theRNCharacterValues.Values[1] = 50;
+	theRNCharacterValues.Values[2] = 1;
+	theRNCharacterValues.Values[3] = 1;
+	theRNCharacterValues.Values[4] = 1;
+	theRNCharacterValues.Values[5] = 0;
+	theArabicValue = RomanNumeralArabicValue(theRNCharacterValues);
+	ck_assert_int_eq(theArabicValue, 43);
 }
 END_TEST
 
@@ -143,6 +160,7 @@ Suite *SingleCharacterSuite(void)
 	TCase *tc_AllSingleCharacterValues;
 	TCase *tc_OtherValues;
 	TCase *tc_TestStringValues;
+	TCase *tc_TestArabicValue;
 
 	s = suite_create("SingleCharacterSuite");
 
@@ -170,6 +188,11 @@ Suite *SingleCharacterSuite(void)
 	tc_TestStringValues = tcase_create("TestStringVals");
 	tcase_add_test(tc_TestStringValues, RomanNumeralStringToCharVector);
 	suite_add_tcase(s, tc_TestStringValues);
+
+	/* Test Case for arabic value of RN from arabic value of RN characters */
+	tc_TestArabicValue = tcase_create("TestArabicValue");
+	tcase_add_test(tc_TestArabicValue, RomanNumeraltoArabic);
+	suite_add_tcase(s, tc_TestArabicValue);
 
 	return s;
 }
