@@ -9,16 +9,18 @@
 #define RomanNumeralCalculator_H
 
 #endif
+
+#define MAXLEN 15
 typedef struct RNString RNString;
 
 struct RNString {
-	char characters[12];
+	char characters[MAXLEN];
 };
 
 typedef struct RNValues RNValues;
 
 struct RNValues {
-	int Values[12];
+	int Values[MAXLEN];
 };
 
 /* constant variable for roman numeral characters */

@@ -152,6 +152,22 @@ START_TEST(RomanNumeraltoArabic){
 }
 END_TEST
 
+START_TEST(DifferentValueTest){
+/* function prototype: int RomanNumeralArabicValue (RNValues) */
+
+	int theArabicValue;
+	RNValues theRNCharacterValues;
+	theRNCharacterValues.Values[0] = 1000;
+	theRNCharacterValues.Values[1] = 50;
+	theRNCharacterValues.Values[2] = 100;
+	theRNCharacterValues.Values[3] = 1;
+	theRNCharacterValues.Values[4] = 5;
+	theRNCharacterValues.Values[5] = 0;
+	theArabicValue = RomanNumeralArabicValue(theRNCharacterValues);
+	ck_assert_int_eq(theArabicValue, 1054);
+}
+END_TEST
+
 /* Create Test Suite */
 Suite *SingleCharacterSuite(void)
 {
@@ -192,6 +208,7 @@ Suite *SingleCharacterSuite(void)
 	/* Test Case for arabic value of RN from arabic value of RN characters */
 	tc_TestArabicValue = tcase_create("TestArabicValue");
 	tcase_add_test(tc_TestArabicValue, RomanNumeraltoArabic);
+	tcase_add_test(tc_TestArabicValue, DifferentValueTest);
 	suite_add_tcase(s, tc_TestArabicValue);
 
 	return s;

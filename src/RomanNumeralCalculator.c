@@ -45,7 +45,7 @@ RNValues VectorOfCharacterValues (RNString InputRN)
 /* InputRomanNumeral must be a string of characters ending in NULL */
 	int k;
 	RNValues InputRNValues;
-	for(k=0;k<12;k++)
+	for(k=0;k<MAXLEN;k++)
 	{
 		InputRNValues.Values[k] = SingleCharacterValue(InputRN.characters[k]);
 	}
@@ -55,7 +55,34 @@ RNValues VectorOfCharacterValues (RNString InputRN)
 
 int RomanNumeralArabicValue (RNValues InputRNValues)
 {/* start of RomanNumeralArabicValue */
-return 3;
+
+	int working, total;
+	int i,k;
+	working = InputRNValues.Values[0];
+	total = 0;
+	for(i=1;i<MAXLEN;i++)
+	{	k = i-1;
+		if(InputRNValues.Values[i] == InputRNValues.Values[k])
+		{
+			working += InputRNValues.Values[i];
+		}
+		if(InputRNValues.Values[i] > InputRNValues.Values[k])
+		{
+			total += (InputRNValues.Values[i]-working);
+			working = 0;
+		}
+		if(InputRNValues.Values[i] < InputRNValues.Values[k] && InputRNValues.Values[i] != 0)
+		{
+			total += working;
+			working = InputRNValues.Values[i];
+		}
+		if(InputRNValues.Values[i] == 0)
+		{
+			total += working;
+			i = MAXLEN;
+		}
+	}
+return total;
 /* end of RomanNumeralArabicValue */}
 
 
