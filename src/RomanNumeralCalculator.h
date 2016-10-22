@@ -9,18 +9,31 @@
 #define RomanNumeralCalculator_H
 
 #endif
+typedef struct RNString RNString;
+
+struct RNString {
+	char characters[12];
+};
+
+typedef struct RNValues RNValues;
+
+struct RNValues {
+	int Values[12];
+};
 
 /* constant variable for roman numeral characters */
-const char RNChars[] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+static const char RNChars[] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 
 /* constant variable for roman numeral values */
-const int RNVals[] = {1, 5, 10, 50, 100, 500, 1000};
+static const int RNVals[] = {1, 5, 10, 50, 100, 500, 1000};
 
 /* global variables to hold Roman Numerals and Values */
-char InputRomanNumeral[7];
-int InputRomanNumeralValues[7];
+static char InputRomanNumeral[12];
+static int InputRomanNumeralValues[12];
 
 /* function prototypes */
 int SingleCharacterValue (char);
-void VectorOfCharacterValues (void);
+RNValues VectorOfCharacterValues (RNString);
+
+
 

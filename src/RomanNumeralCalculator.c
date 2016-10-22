@@ -11,7 +11,7 @@
 
 int main(void) {
 
-printf("\n\nthe code did Compile\n\n");
+printf("\n\nthe code did Compileee\n\n");
 return 0;
 
 
@@ -30,19 +30,28 @@ int SingleCharacterValue( char RomanNumeral)
 		if(RomanNumeral == RNChars[i])
 		{
 			SCV = RNVals[i];
-			i = 6;
+			i = 7;
 		}
 	}
 
 	return SCV;
 /* end of SingleCharacterValue */}
 
-void VectorOfCharacterValues (void)
+RNValues VectorOfCharacterValues (RNString InputRN)
 {/* start of VectorOfCharacterValues */
 /* This function is called to determine the value of each character in */
 /* a Roman Numeral. Global variables (declared in the header file */
 /* RomanNumeralCalculator.h) are used to store the information */
+/* InputRomanNumeral must be a string of characters ending in NULL */
+	int k;
+	RNValues InputRNValues;
+	for(k=0;k<12;k++)
+	{
+		InputRNValues.Values[k] = SingleCharacterValue(InputRN.characters[k]);
+	}
 
-InputRomanNumeralValues[2] = SingleCharacterValue(InputRomanNumeral[2]);
-
+	return InputRNValues;
 /* end of VectorOfCharacterValues */}
+
+
+

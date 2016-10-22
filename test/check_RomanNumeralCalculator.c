@@ -86,23 +86,51 @@ END_TEST
 START_TEST(CheckRandomCharacter)
 {/* function prototype: int SingleCharacterValue (char) */
 	int SCNV;
-	
-	SCNV = SingleCharacterValue('Q');
-        ck_assert_int_eq(SCNV, 0);
+	char ii;
+	for(ii=0;ii<126;ii++)
+	{
+		if(ii==67) /* skip 'C' and 'D' */
+		{
+			ii++;
+			ii++;
+		}
+		if(ii==73) /* skip 'I' */
+		{
+			ii++;
+		}
+		if(ii==76) /* skip 'L' and 'M' */
+		{
+			ii++;
+			ii++;
+		}
+		if(ii==86) /* skip 'V' */
+		{
+			ii++;
+		}
+		if(ii==88) /* skip 'X' */
+		{
+			ii++;
+		}
+		SCNV = SingleCharacterValue(ii);
+	        ck_assert_int_eq(SCNV, 0);
+	}
 }
 END_TEST
 
 /* Test that code converts string of characters into separate characters */
 START_TEST(RomanNumeralStringToCharVector){
 /* fucntion prototype: void VectorOfCharacterValues (void) */
-	
+	RNString TestNumeral;
+	RNValues TestValues;
+	strcpy(TestNumeral.characters, "MXVII");
 	InputRomanNumeral[0] = 'M' ;
 	InputRomanNumeral[1] = 'X' ;
 	InputRomanNumeral[2] = 'V' ;
 	InputRomanNumeral[3] = 'I' ;
 	InputRomanNumeral[4] = 'I' ;
-	VectorOfCharacterValues();
-	ck_assert_int_eq(InputRomanNumeralValues[2], 5);
+	InputRomanNumeral[5] = NULL;
+	TestValues = VectorOfCharacterValues(TestNumeral);
+	ck_assert_int_eq(TestValues.Values[2], 5);
 
 }
 END_TEST
