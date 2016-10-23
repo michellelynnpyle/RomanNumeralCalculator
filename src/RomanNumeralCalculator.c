@@ -117,6 +117,7 @@ RNString BackToRomanNumeral (int ResultValue)
 		/* change this to an error message later */
 	}
 	if(flag !=1){
+		/* a loop to find the digits of the ResultValue */
 		k = 1000;
 		for(i=0;i<4;i++)
 		{
@@ -124,11 +125,117 @@ RNString BackToRomanNumeral (int ResultValue)
 			ResultValue = ResultValue-(placevalue[i]*k);
 			k = k/10;
 		}
+		/* a loop to convert each digit to roman numerals */
+		/* uses conversion system based on base, fives, and tens characters for each place */
+		k=0;
+			/* writing thousands place */
+		for(i=0;i<placevalue[0];i++)
+		{
+			ResultRomanNumeral.characters[k] = 'M';
+			k++;
+		}
+			/* writing hundreds place */
+		if(placevalue[1]<4)
+		{
+			for(i=0;i<placevalue[1];i++)
+			{
+				ResultRomanNumeral.characters[k] = HundredsChars[0];
+				k++;
+			}
+		}
+		if(placevalue[1]==4)
+		{
+			ResultRomanNumeral.characters[k] = HundredsChars[0];
+			k++;
+			ResultRomanNumeral.characters[k] = HundredsChars[1];
+			k++;
+		}
+		if(placevalue[1]>4 && placevalue[1]<9)
+		{
+			ResultRomanNumeral.characters[k] = HundredsChars[1];
+			k++;
+			for(i=5;i<placevalue[1];i++)
+			{
+				ResultRomanNumeral.characters[k] = HundredsChars[0];
+				k++;
+			}
+		}
+		if(placevalue[1]==9)
+		{
+			ResultRomanNumeral.characters[k] = HundredsChars[0];
+			k++;
+			ResultRomanNumeral.characters[k] = HundredsChars[2];
+			k++;
+		}
+	/* writing tens place */
+		if(placevalue[2]<4)
+		{
+			for(i=0;i<placevalue[2];i++)
+			{
+				ResultRomanNumeral.characters[k] = TensChars[0];
+				k++;
+			}
+		}
+		if(placevalue[2]==4)
+		{
+			ResultRomanNumeral.characters[k] = TensChars[0];
+			k++;
+			ResultRomanNumeral.characters[k] = TensChars[1];
+			k++;
+		}
+		if(placevalue[2]>4 && placevalue[1]<9)
+		{
+			ResultRomanNumeral.characters[k] = TensChars[1];
+			k++;
+			for(i=5;i<placevalue[2];i++)
+			{
+				ResultRomanNumeral.characters[k] = TensChars[0];
+				k++;
+			}
+		}
+		if(placevalue[2]==9)
+		{
+			ResultRomanNumeral.characters[k] = TensChars[0];
+			k++;
+			ResultRomanNumeral.characters[k] = TensChars[2];
+			k++;
+		}
+			/* writing ones place */
+		if(placevalue[3]<4)
+		{
+			for(i=0;i<placevalue[3];i++)
+			{
+				ResultRomanNumeral.characters[k] = OnesChars[0];
+				k++;
+			}
+		}
+		if(placevalue[3]==4)
+		{
+			ResultRomanNumeral.characters[k] = OnesChars[0];
+			k++;
+			ResultRomanNumeral.characters[k] = OnesChars[1];
+			k++;
+		}
+		if(placevalue[3]>4 && placevalue[3]<9)
+		{
+			ResultRomanNumeral.characters[k] = OnesChars[1];
+			k++;
+			for(i=5;i<placevalue[3];i++)
+			{
+				ResultRomanNumeral.characters[k] = OnesChars[0];
+				k++;
+			}
+		}
+		if(placevalue[3]==9)
+		{
+			ResultRomanNumeral.characters[k] = OnesChars[0];
+			k++;
+			ResultRomanNumeral.characters[k] = OnesChars[2];
+			k++;
+		}
+	ResultRomanNumeral.characters[k] = NULL;
 	}
-	ResultRomanNumeral.characters[0] = placevalue[0];
-	ResultRomanNumeral.characters[1] = placevalue[1];
-	ResultRomanNumeral.characters[2] = placevalue[2];
-	ResultRomanNumeral.characters[3] = placevalue[3];
+		
 	return ResultRomanNumeral;
 /* end of BackToRomanNumeral */}
 

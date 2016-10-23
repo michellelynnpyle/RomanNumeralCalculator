@@ -181,10 +181,14 @@ START_TEST(TestArabicToRomanNumeral){
 /* function prototype: RNString BackToRomanNumeral (ResultValue) */
 	RNString ResultRomanNumeral;
 	ResultRomanNumeral = BackToRomanNumeral(1024);
-	ck_assert_int_eq(ResultRomanNumeral.characters[0], 1);
+	/* the code below used to test digit finding loop */
+	/*ck_assert_int_eq(ResultRomanNumeral.characters[0], 1);
 	ck_assert_int_eq(ResultRomanNumeral.characters[1], 0);
 	ck_assert_int_eq(ResultRomanNumeral.characters[2], 2);
-	ck_assert_int_eq(ResultRomanNumeral.characters[3], 4);
+	ck_assert_int_eq(ResultRomanNumeral.characters[3], 4);*/
+
+	/* the code below used to test full conversion to roman numeral */
+	ck_assert_str_eq(ResultRomanNumeral.characters, "MXXIV");
 }
 END_TEST
 

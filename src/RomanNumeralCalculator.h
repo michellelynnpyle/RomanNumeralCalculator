@@ -29,6 +29,11 @@ static const char RNChars[] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
 /* constant variable for roman numeral values */
 static const int RNVals[] = {1, 5, 10, 50, 100, 500, 1000};
 
+/* characters for ones place */
+static const int OnesChars[] = {'I', 'V', 'X'};
+static const int TensChars[] = {'X', 'L', 'C'};
+static const int HundredsChars[] = {'C', 'D', 'M'};
+
 /* global variables to hold Roman Numerals and Values 
 static char InputRomanNumeral[12];
 static int InputRomanNumeralValues[12];*/
