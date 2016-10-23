@@ -88,7 +88,16 @@ return total;
 
 int Calculator (int FirstValue, int SecondValue, char Operator)
 {/* start of Calculator */
-return 0;
+	int result;
+	if(Operator == '+')
+	{
+		result = FirstValue+SecondValue;
+	}
+	if(Operator == '-')
+	{
+		result = FirstValue-SecondValue;
+	}
+	return result;
 /* end of Calculator */}
 
 
