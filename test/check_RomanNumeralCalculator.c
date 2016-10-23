@@ -177,6 +177,14 @@ START_TEST(TestCalculator){
 }
 END_TEST
 
+START_TEST(TestArabicToRomanNumeral){
+/* function prototype: RNString BackToRomanNumeral (ResultValue) */
+	RNString ResultRomanNumeral;
+	ResultRomanNumeral = BackToRomanNumeral(1024);
+	ck_assert_int_eq(ResultRomanNumeral.characters[0], 13);
+}
+END_TEST
+
 /* Create Test Suite */
 Suite *SingleCharacterSuite(void)
 {
@@ -187,6 +195,7 @@ Suite *SingleCharacterSuite(void)
 	TCase *tc_TestStringValues;
 	TCase *tc_TestArabicValue;
 	TCase *tc_TestCalculator;
+	TCase *tc_TestBackToRomanNumeral;
 
 	s = suite_create("SingleCharacterSuite");
 
@@ -225,6 +234,11 @@ Suite *SingleCharacterSuite(void)
 	tc_TestCalculator = tcase_create("TestCalculator");
 	tcase_add_test(tc_TestCalculator, TestCalculator);
 	suite_add_tcase(s, tc_TestCalculator);
+
+	/* Test Case for converting the resulting value back to roman Numeral */
+	tc_TestBackToRomanNumeral = tcase_create("TestBackToRomanNumeral");
+	tcase_add_test(tc_TestBackToRomanNumeral, TestArabicToRomanNumeral);
+	suite_add_tcase(s, tc_TestBackToRomanNumeral);
 
 	return s;
 }

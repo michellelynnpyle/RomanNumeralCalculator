@@ -38,6 +38,7 @@ int SingleCharacterValue (char);
 RNValues VectorOfCharacterValues (RNString);
 int RomanNumeralArabicValue (RNValues);
 int Calculator (int, int, char);
+RNString BackToRomanNumeral (int);
 
 
 

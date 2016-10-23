@@ -100,5 +100,12 @@ int Calculator (int FirstValue, int SecondValue, char Operator)
 	return result;
 /* end of Calculator */}
 
+RNString BackToRomanNumeral (int ResultValue)
+{/* start of BackToRomanNumeral */
+	RNString ResultRomanNumeral;
+	ResultRomanNumeral.characters[0] = 12;
+	return ResultRomanNumeral;
+/* end of BackToRomanNumeral */}
+
 
 

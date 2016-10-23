@@ -16,7 +16,7 @@ FAIL: check_RomanNumeralCalculator
 ==================================
 
 Running suite(s): SingleCharacterSuite
-92%: Checks: 13, Failures: 1, Errors: 0
-test/check_RomanNumeralCalculator.c:175:F:TestCalculator:TestCalculator:0: Assertion 'Output == 15' failed: Output == 0, 15 == 15
+92%: Checks: 14, Failures: 1, Errors: 0
+test/check_RomanNumeralCalculator.c:184:F:TestBackToRomanNumeral:TestArabicToRomanNumeral:0: Assertion 'ResultRomanNumeral.characters[0] == 13' failed: ResultRomanNumeral.characters[0] == 0, 13 == 13
 FAIL check_RomanNumeralCalculator (exit status: 1)
 
