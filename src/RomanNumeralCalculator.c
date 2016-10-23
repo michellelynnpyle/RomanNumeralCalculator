@@ -103,7 +103,32 @@ int Calculator (int FirstValue, int SecondValue, char Operator)
 RNString BackToRomanNumeral (int ResultValue)
 {/* start of BackToRomanNumeral */
 	RNString ResultRomanNumeral;
-	ResultRomanNumeral.characters[0] = 12;
+	char flag = 0;
+	char placevalue[4];
+	int i, k;
+	if(ResultValue < 1)
+	{
+		flag = 1;
+		/* change this to an error message later */
+	}
+	if(ResultValue > 3999)
+	{
+		flag = 1;
+		/* change this to an error message later */
+	}
+	if(flag !=1){
+		k = 1000;
+		for(i=0;i<4;i++)
+		{
+			placevalue[i] = floor(ResultValue/k);
+			ResultValue = ResultValue-(placevalue[i]*k);
+			k = k/10;
+		}
+	}
+	ResultRomanNumeral.characters[0] = placevalue[0];
+	ResultRomanNumeral.characters[1] = placevalue[1];
+	ResultRomanNumeral.characters[2] = placevalue[2];
+	ResultRomanNumeral.characters[3] = placevalue[3];
 	return ResultRomanNumeral;
 /* end of BackToRomanNumeral */}
 
