@@ -86,4 +86,10 @@ return total;
 /* end of RomanNumeralArabicValue */}
 
 
+int Calculator (int FirstValue, int SecondValue, char Operator)
+{/* start of Calculator */
+return 0;
+/* end of Calculator */}
+
+
 

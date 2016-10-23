@@ -168,6 +168,15 @@ START_TEST(DifferentValueTest){
 }
 END_TEST
 
+START_TEST(TestCalculator){
+/* function prototype: int Calculator (FirstValue, SecondValue, Operator) */
+	int Output;
+	Output = Calculator(25, 10, '-');
+	ck_assert_int_eq(Output, 15);
+
+}
+END_TEST
+
 /* Create Test Suite */
 Suite *SingleCharacterSuite(void)
 {
@@ -177,6 +186,7 @@ Suite *SingleCharacterSuite(void)
 	TCase *tc_OtherValues;
 	TCase *tc_TestStringValues;
 	TCase *tc_TestArabicValue;
+	TCase *tc_TestCalculator;
 
 	s = suite_create("SingleCharacterSuite");
 
@@ -210,6 +220,11 @@ Suite *SingleCharacterSuite(void)
 	tcase_add_test(tc_TestArabicValue, RomanNumeraltoArabic);
 	tcase_add_test(tc_TestArabicValue, DifferentValueTest);
 	suite_add_tcase(s, tc_TestArabicValue);
+
+	/* Test Case for making sure the right operation is performed */
+	tc_TestCalculator = tcase_create("TestCalculator");
+	tcase_add_test(tc_TestCalculator, TestCalculator);
+	suite_add_tcase(s, tc_TestCalculator);
 
 	return s;
 }

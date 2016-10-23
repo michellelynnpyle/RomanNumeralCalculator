@@ -37,6 +37,7 @@ static int InputRomanNumeralValues[12];*/
 int SingleCharacterValue (char);
 RNValues VectorOfCharacterValues (RNString);
 int RomanNumeralArabicValue (RNValues);
+int Calculator (int, int, char);
 
 
 
