@@ -241,7 +241,19 @@ RNString BackToRomanNumeral (int ResultValue)
 
 RNString FullCalculator(RNString RomanNumeral1, RNString RomanNumeral2, char Operator)
 {
-return RomanNumeral1;
+	int RomanNumeralValue1, RomanNumeralValue2;
+	int ResultValue;
+	RNValues RomanNumeralValues1, RomanNumeralValues2;
+	RNString ResultRomanNumeral;
+	RomanNumeralValues1 = VectorOfCharacterValues(RomanNumeral1);
+	RomanNumeralValues2 = VectorOfCharacterValues(RomanNumeral2);
+	RomanNumeralValue1 = RomanNumeralArabicValue(RomanNumeralValues1);
+	RomanNumeralValue2 = RomanNumeralArabicValue(RomanNumeralValues2);
+	ResultValue = Calculator(RomanNumeralValue1, RomanNumeralValue2, Operator);
+	ResultRomanNumeral = BackToRomanNumeral(ResultValue);
+	
+
+return ResultRomanNumeral;
 
 }
 
