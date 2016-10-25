@@ -25,6 +25,7 @@ struct RNValues {
 
 /* constant variable for roman numeral characters */
 static const char RNChars[] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+static const char LowerRNChars[] = {'i', 'v', 'x', 'l', 'c', 'd', 'm'};
 
 /* constant variable for roman numeral values */
 static const int RNVals[] = {1, 5, 10, 50, 100, 500, 1000};
@@ -44,6 +45,7 @@ RNValues VectorOfCharacterValues (RNString);
 int RomanNumeralArabicValue (RNValues);
 int Calculator (int, int, char);
 RNString BackToRomanNumeral (int);
+RNString FullCalculator(RNString, RNString, char);
 
 
 

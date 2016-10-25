@@ -27,7 +27,7 @@ int SingleCharacterValue( char RomanNumeral)
 	SCV = 0;
 	for(i=0;i<=6;i++)
 	{
-		if(RomanNumeral == RNChars[i])
+		if(RomanNumeral == RNChars[i] || RomanNumeral == LowerRNChars[i])
 		{
 			SCV = RNVals[i];
 			i = 7;
@@ -238,6 +238,12 @@ RNString BackToRomanNumeral (int ResultValue)
 		
 	return ResultRomanNumeral;
 /* end of BackToRomanNumeral */}
+
+RNString FullCalculator(RNString RomanNumeral1, RNString RomanNumeral2, char Operator)
+{
+return RomanNumeral1;
+
+}
 
 
 

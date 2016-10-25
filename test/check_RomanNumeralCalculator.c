@@ -82,12 +82,20 @@ START_TEST(DetermineValueOfM)
         ck_assert_int_eq(SCNV, 1000);
 }
 END_TEST
+START_TEST(DetermineValueOfLowerM)
+{/* function prototype: int SingleCharacterValue (char) */
+	int SCNV;
+	
+        SCNV = SingleCharacterValue('m');
+        ck_assert_int_eq(SCNV, 1000);
+}
+END_TEST
 
 START_TEST(CheckRandomCharacter)
 {/* function prototype: int SingleCharacterValue (char) */
 	int SCNV;
 	char ii;
-	for(ii=0;ii<126;ii++)
+	for(ii=0;ii<89;ii++)
 	{
 		if(ii==67) /* skip 'C' and 'D' */
 		{
@@ -192,6 +200,21 @@ START_TEST(TestArabicToRomanNumeral){
 }
 END_TEST
 
+START_TEST(TestFullCalculator){
+/* function prototype: RNString FullCalculator(RomanNumeral1, RomanNumeral2, Operator)*/
+
+	RNString ResultRomanNumeral;
+	RNString RomanNumeral1, RomanNumeral2;
+	char Operator;
+	/* 43 - 12 */
+	strcpy(RomanNumeral1.characters, "XLIII");
+	strcpy(RomanNumeral2.characters, "XII");
+	Operator = '-';
+	ResultRomanNumeral = FullCalculator(RomanNumeral1, RomanNumeral2, Operator);
+	ck_assert_str_eq(ResultRomanNumeral.characters, "XXXI");
+}
+END_TEST
+
 /* Create Test Suite */
 Suite *SingleCharacterSuite(void)
 {
@@ -203,6 +226,7 @@ Suite *SingleCharacterSuite(void)
 	TCase *tc_TestArabicValue;
 	TCase *tc_TestCalculator;
 	TCase *tc_TestBackToRomanNumeral;
+	TCase *tc_TestFullCalculator;
 
 	s = suite_create("SingleCharacterSuite");
 
@@ -220,6 +244,7 @@ Suite *SingleCharacterSuite(void)
 	tcase_add_test(tc_AllSingleCharacterValues, DetermineValueOfC);
 	tcase_add_test(tc_AllSingleCharacterValues, DetermineValueOfD);
 	tcase_add_test(tc_AllSingleCharacterValues, DetermineValueOfM);
+	tcase_add_test(tc_AllSingleCharacterValues, DetermineValueOfLowerM);
 	suite_add_tcase(s, tc_AllSingleCharacterValues);
 	/* Test Case for other characters = 0 */
 	tc_OtherValues = tcase_create("OtherValues");
@@ -246,6 +271,11 @@ Suite *SingleCharacterSuite(void)
 	tc_TestBackToRomanNumeral = tcase_create("TestBackToRomanNumeral");
 	tcase_add_test(tc_TestBackToRomanNumeral, TestArabicToRomanNumeral);
 	suite_add_tcase(s, tc_TestBackToRomanNumeral);
+
+	/* Test Case for the FullCalculator function */
+	tc_TestFullCalculator = tcase_create("TestFullCalculator");
+	tcase_add_test(tc_TestFullCalculator, TestFullCalculator);
+	suite_add_tcase(s, tc_TestFullCalculator);
 
 	return s;
 }

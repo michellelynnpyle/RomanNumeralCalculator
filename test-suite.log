@@ -3,12 +3,20 @@
 ===================================================
 
 # TOTAL: 1
-# PASS:  1
+# PASS:  0
 # SKIP:  0
 # XFAIL: 0
-# FAIL:  0
+# FAIL:  1
 # XPASS: 0
 # ERROR: 0
 
 .. contents:: :depth: 2
+
+FAIL: check_RomanNumeralCalculator
+==================================
+
+Running suite(s): SingleCharacterSuite
+93%: Checks: 16, Failures: 1, Errors: 0
+test/check_RomanNumeralCalculator.c:214:F:TestFullCalculator:TestFullCalculator:0: Assertion 'ResultRomanNumeral.characters == "XXXI"' failed: ResultRomanNumeral.characters == "XLIII", "XXXI" == "XXXI"
+FAIL check_RomanNumeralCalculator (exit status: 1)
 
