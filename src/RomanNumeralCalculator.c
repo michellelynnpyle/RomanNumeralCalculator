@@ -11,9 +11,7 @@
 
 int main(void) {
 
-printf("\n\nthe code did Compileee\n\n");
 return 0;
-
 
 }
 
