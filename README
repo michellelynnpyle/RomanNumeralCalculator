@@ -1,0 +1,11 @@
+To install:
+
+>autoreconf --install
+>./configure
+>make
+>make check
+
+executables created:
+
+./RomanNumeralCalculator
+./check_RomanNumeralCalculator
